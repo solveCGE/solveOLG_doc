@@ -37,7 +37,7 @@ $$A^{a+1} = (1+r^a)\left[A^a - p^{C,a}C^a + y^a + iv^a + ab^a \right],$$
 
 $$y^a = \phi^a(1-\tau^{W,a})\ell^a\theta^aw^a + (1-\phi^a)(1-\tau^{W,a})p^a - \tau^{l,a}.$$
 
-$C$: consumption, $\ell$: hours worked, $\beta$: discount factor, $A$: household assets, $r$: real interest rate, $p^C = (1+\tau^C)$: after-tax price of consumption, $y$: net labor and pension income, $iv$: net inter-vivo transfers received, $ab$: accidental bequests received, $\phi$ share of non-retired households, $\theta$: productivity, $w$: wage rate per efficiency unit, $\tau^{W,a}$: tax on labor and pension income, $p$: pension income,$\tau^l$: lump-sum tax. Children do not work, pay no taxes and receive no transfers or bequests. They start adulthood wiht zero assets, i.e. $A^{\underline{a}}=0$.^[Government consumption can depend on the number of children.]
+$C$: consumption, $\ell$: hours worked, $\beta$: discount factor, $A$: household assets, $r$: real interest rate, $p^C = (1+\tau^C)$: after-tax price of consumption, $y$: net labor and pension income, $iv$: net inter-vivo transfers received, $ab$: accidental bequests received, $\phi$ share of non-retired households, $\theta$: productivity, $w$: wage rate per efficiency unit, $\tau^{W,a}$: tax on labor and pension income, $p$: pension income,$\tau^l$: lump-sum tax. Children do not work, pay no taxes and receive no transfers or bequests. They start adulthood with zero assets, i.e. $A^{\underline{a}}=0$.^[Government consumption can depend on the number of children.]
 
 ## Envelope and optimality conditions
 
