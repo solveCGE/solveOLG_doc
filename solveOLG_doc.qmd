@@ -37,7 +37,7 @@ $$A^{a+1} = (1+r^a)\left[A^a - p^{C,a}C^a + y^a + iv^a + ab^a \right],$$
 
 $$y^a = \phi^a(1-\tau^{W,a})\ell^a\theta^aw^a + (1-\phi^a)(1-\tau^{W,a})p^a - \tau^{l,a}.$$
 
-$C$: consumption, $\ell$: hours worked, $\beta$: discount factor, $A$: household assets, $r$: real interest rate, $p^C = (1+\tau^C)$: after-tax price of consumption, $y$: net labor and pension income, $iv$: net inter-vivo transfers received, $ab$: accidental bequests received, $\phi$ share of non-retired households, $\theta$: productivity, $w$: wage rate per efficiency unit, $\tau^{W,a}$: tax on labor and pension income, $p$: pension income,$\tau^l$: lump-sum tax. Children do not work, pay no taxes and receive no transfers or bequests. They start adulthood with zero assets, i.e. $A^{\underline{a}}=0$.^[Government consumption can depend on the number of children.]
+$C$: consumption, $\ell$: hours worked, $\beta$: discount factor, $A$: household assets, $r$: real interest rate, $p^C = (1+\tau^C)$: after-tax price of consumption, $y$: net labor and pension income, $iv$: net inter-vivo transfers received, $ab$: accidental bequests received, $\phi$ share of non-retired households, $\theta$: productivity, $w$: wage rate per efficiency unit, $\tau^{W,a}$: tax on labor and pension income, $p$: pension income,$\tau^l$: lump-sum tax. Children do not work, pay no taxes and receive no transfers or bequests.^[We keep track of the number of children as they affect government consumption.] They start adulthood with zero assets, i.e. $A^{\underline{a}}=0$.
 
 ## Envelope and optimality conditions
 
@@ -46,9 +46,9 @@ $$A^a:~~ \lambda^a = \gamma^a\beta(1+r^a)\lambda^{a+1},$$
 $$C^a:~~ u_{C^a} = \gamma^a\beta(1+r^a)\lambda^{a+1}p^{C,a},$$
 $$\ell^a:~~ -u_{\ell^a} = \gamma^a\beta(1+r^a)\lambda^{a+1}\frac{\partial y^a}{\partial \ell^a},$$
 This gives the Euler equation and the labor supply function:
-$$\frac{u_{C^a}}{p^{C,a}} = \lambda^a, ~~~ \Rightarrow ~~~ u_{C^a} = \left[\frac{p^{C,a}}{p^{C,a+1}}\beta(1+r^a)\right]u_{C^{a+1}},$$
+$$\frac{u_{C^a}}{p^{C,a}} = \lambda^a, ~~~ \Rightarrow ~~~ u_{C^a} = \left[\frac{p^{C,a}}{p^{C,a+1}}\beta(1+r^a)\gamma^a\right]u_{C^{a+1}},$$
 
-$$-\frac{u_{\ell^a}}{u_{C^a}} = p^{C,a}\frac{\partial y^a}{\partial \ell^a} = p^{C,a}\phi^a(1-\tau^{W,a})\theta^aw^a.$$
+$$-\frac{u_{\ell^a}}{u_{C^a}} = 1/p^{C,a}\frac{\partial y^a}{\partial \ell^a} = 1/p^{C,a}\phi^a(1-\tau^{W,a})\theta^aw^a.$$
 
 ## Functional form utility function
 
@@ -74,11 +74,11 @@ $H$: human wealth (discounted future labor and pension income), $\Omega$: margin
 
 ## Aggregation
 
-To aggregate household variables one first must convert them to period view and the compute weighted sums. E.g. aggregate consumption is $C_t = \sum_a C^a_tN^a_t$. Total effective labor supply is $L^S_t = \sum_a \pi^a_t\ell^a_t\theta^a_tN^a_t$ and so on.
+To aggregate household variables one must first convert them to period view and then compute weighted sums. E.g. aggregate consumption is $C_t = \sum_a C^a_tN^a_t$. Total effective labor supply is $L^S_t = \sum_a \phi^a_t\ell^a_t\theta^a_tN^a_t$ and so on.
 
 # Firm problem
 
-The representative firm solve the following optimization problem
+The representative firm solves the following optimization problem
 $$V_t = \max_{I_t,L^D_t} ~\chi_t + V_{t+1}/(1+r_t),~~ s.t.$$
 $$\chi_t = Y(K_t,L^D_t) - (1+\tau^F_t)w_tL^D_t - I_t - T^F_t,$$
 $$T^F_t = \tau^{prof}_t\left[Y(K_t,L^D_t) - (1+\tau^F_t)w_tL^D_t - \delta K_t\right],$$
@@ -94,7 +94,7 @@ $$L^D_t: ~~~ Y_{L^D_t} = (1+\tau^F_t)w_t.$$
 This implies
 $$Y_{K_t} = \frac{r_{t-1} + \delta(1-\tau^{prof}_t)}{1-\tau^{prof}_t}.$$
 The right-hand side is user cost of capital $uck_t$. We can think of $Y_{K_t}()$ as the inverse capital demand function that returns the user cost of capital for a given capital stock consistent with optimal behavior of the firm. I assume $Y()$ to be linearly homogenoeous. Therefore, Hayashi's theorem applies: $V_t = q_tK_t$. Inserting this in the capital demand function gives an implicit relationship of $r_t$ and $V_{t+1}$ that can be used to find the asset market clearing interest rate (all other things constant).\
-$$Y_{K_{t+1}}((1+r_t)V_{t+1}) = \frac{r_{t} + \delta(1-\tau^{prof}_{t+1})}{1-\tau^{prof}_{t+1}}.$$
+$$Y_{K_{t+1}}(V_{t+1}/(1+r_t)) = \frac{r_{t} + \delta(1-\tau^{prof}_{t+1})}{1-\tau^{prof}_{t+1}}.$$
 
 ## Functional form production function
 
@@ -103,7 +103,7 @@ Here I assume: $Y(K,L) = TFP \cdot K^\alpha L^{1-\alpha}$. Therefore, $Y_K = TFP
 # Government
 
 Total government expenditures are:\
-$$Exp_t = C^G_t + P_t, ~~~\text{with~~} C^G_t = \sum_a c^{G,a}_tN^a_t,~~~ P_t = \sum_a (1-\phi^a_t)p^a_t,$$
+$$Exp_t = C^G_t + P_t, ~~~\text{with~~} C^G_t = \sum_a c^{G,a}_tN^a_t,~~~ P_t = \sum_a (1-\phi^a_t)p^a_tN^a_t,$$
 Total government revenues are:\
 $$Rev_t = T^F_t + (\tau^F_tL^D_t + \tau^W_tL^S_t)w_t + \sum_a \tau^{l,a}_tN^a_t + \tau^C_tC_t + \tau^W_tP_t$$
 One of the government instruments is always set such that the primary balance ($PB_t = Rev_t - Exp_t$) is consistent with an exogenous debt trajectory following the law of motion
