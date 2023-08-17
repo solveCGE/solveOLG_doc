@@ -1,6 +1,5 @@
 ---
 # compile with: quarto render solveOLG_doc.qmd
-
 title: "A Simple Auerbach-Kotlikoff Model"
 subtitle: "Accompanying model description for the `solveOLG_xxx` codes."
 author: "Philip Schuster"
@@ -10,9 +9,10 @@ date-format: "MMMM, YYYY"
 format:
    #html: default
    pdf: default
-
 abstract: "This document briefly describes the model solved in the `solveOLG_xxx` codes."
-
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # Demography
@@ -20,16 +20,24 @@ abstract: "This document briefly describes the model solved in the `solveOLG_xxx
 The law of motion for population is
 
 $$N^a_t = N^{a-1}_{t-1}\gamma^{a-1}_{t-1}, ~\forall a \in \left[1,\overline{a}\right],~~\text{~~and~~~}N^0_t = NB_t.$$
-$N^a_t$: mass of persons with age $a$ at time $t$, $\gamma$: conditional survival probability, $NB$: newborns.
+$N^a_t$: mass of persons with age $a$ at time $t$, $\gamma$: conditional
+survival probability, $NB$: newborns.
 
-Superscript $a$ is age. $t$ is the period index. Alternatively, it is often useful to switch to cohort view, tracking variables indexed by year of birth $z$, with $z = t - a$, i.e. $N^a_z = N^a_{t=z+a}$. In cohort view the law of motion of the population is
+Superscript $a$ is age. $t$ is the period index. Alternatively, it is
+often useful to switch to cohort view, tracking variables indexed by
+year of birth $z$, with $z = t - a$, i.e. $N^a_z = N^a_{t=z+a}$. In
+cohort view the law of motion of the population is
 
 $$N^a_z = N^{a-1}_z\gamma^{a-1}_z, ~\forall a \in \left[1,\overline{a}\right],~~\text{~~and~~~}N^0_z = NB_z.$$
-Persons with $a < \underline{a}$ are children who do not make any economic decisions.
+Persons with $a < \underline{a}$ are children who do not make any
+economic decisions.
 
 # Household problem
 
-A representative household of cohort $z$ solves the following problem^[I drop the cohort index $z$ in this section.])
+A representative household of cohort $z$ solves the following
+problem[^1])
+
+[^1]: I drop the cohort index $z$ in this section.
 
 $$U^a = \max_{C^a,\ell^a} ~u(C^a,\ell^a) + \beta\gamma^aU^{a+1}, ~~~\forall a \in \left[\underline{a},\overline{a}\right]~~ \text{s.t.}$$
 
@@ -37,11 +45,23 @@ $$A^{a+1} = (1+r^a)\left[A^a - p^{C,a}C^a + y^a + iv^a + ab^a \right],$$
 
 $$y^a = \phi^a(1-\tau^{W,a})\ell^a\theta^aw^a + (1-\phi^a)(1-\tau^{W,a})p^a - \tau^{l,a}.$$
 
-$C$: consumption, $\ell$: hours worked, $\beta$: discount factor, $A$: household assets, $r$: real interest rate, $p^C = (1+\tau^C)$: after-tax price of consumption, $y$: net labor and pension income, $iv$: net inter-vivo transfers received, $ab$: accidental bequests received, $\phi$ share of non-retired households, $\theta$: productivity, $w$: wage rate per efficiency unit, $\tau^{W,a}$: tax on labor and pension income, $p$: pension income,$\tau^l$: lump-sum tax. Children do not work, pay no taxes and receive no transfers or bequests.^[We keep track of the number of children as they affect government consumption.] They start adulthood with zero assets, i.e. $A^{\underline{a}}=0$.
+$C$: consumption, $\ell$: hours worked, $\beta$: discount factor, $A$:
+household assets, $r$: real interest rate, $p^C = (1+\tau^C)$: after-tax
+price of consumption, $y$: net labor and pension income, $iv$: net
+inter-vivo transfers received, $ab$: accidental bequests received,
+$\phi$ share of non-retired households, $\theta$: productivity, $w$:
+wage rate per efficiency unit, $\tau^{W,a}$: tax on labor and pension
+income, $p$: pension income,$\tau^l$: lump-sum tax. Children do not
+work, pay no taxes and receive no transfers or bequests.[^2] They start
+adulthood with zero assets, i.e. $A^{\underline{a}}=0$.
+
+[^2]: We keep track of the number of children as they affect government
+    consumption.
 
 ## Envelope and optimality conditions
 
-Define the shadow price of assets as $\lambda^a = \frac{\partial U^a}{\partial A^a}$.
+Define the shadow price of assets as
+$\lambda^a = \frac{\partial U^a}{\partial A^a}$.
 $$A^a:~~ \lambda^a = \gamma^a\beta(1+r^a)\lambda^{a+1},$$
 $$C^a:~~ u_{C^a} = \gamma^a\beta(1+r^a)\lambda^{a+1}p^{C,a},$$
 $$\ell^a:~~ -u_{\ell^a} = \gamma^a\beta(1+r^a)\lambda^{a+1}\frac{\partial y^a}{\partial \ell^a},$$
@@ -52,29 +72,49 @@ $$-\frac{u_{\ell^a}}{u_{C^a}} = 1/p^{C,a}\frac{\partial y^a}{\partial \ell^a} = 
 
 ## Functional form utility function
 
-Sub-disutility of labor^[$\varphi_1^a$ is an additive age-depedent shifter.] is $\varphi(\ell^a) = \varphi_0 \frac{\ell^{1+1/\sigma^L}}{1+1/\sigma^L} + \varphi_1^a$. I assume two different options for $u()$:
+Sub-disutility of labor[^3] is
+$\varphi(\ell^a) = \varphi_0 \frac{\ell^{1+1/\sigma^L}}{1+1/\sigma^L} + \varphi_1^a$.
+I assume two different options for $u()$:
 
-1. With income effects:
-$$u(C^a,l^a) = \frac{(C^a)^{1-1/\sigma}}{1-1/\sigma}- \varphi(\ell^a)$$
-This just gives a life-time profile of consumption. To pin down the consumption values one has to numerically find the initial consumption level ($C^{\underline{a}}$) that exhausts the budget constraint, i.e. assets at end of life are zero: $A^{\overline{a}} - p^{C,\overline{a}}C^{\overline{a}}+y^{\overline{a}} + iv^{\overline{a}} + ab^{\overline{a}} = 0$.\
-\
-With this specification the left-hand side of the labor supply function is given as
-$$-\frac{u_{\ell^a}}{u_{C^a}} = \varphi_0(\ell^a)^{1/\sigma^L} (C^a)^{1/\sigma}$$.
+[^3]: $\varphi_1^a$ is an additive age-depedent shifter.
 
-2. Without income effects:
-$$u(C^a,l^a) = \frac{\left[C^a - \varphi(\ell^a)\right]^{1-1/\sigma}}{1-1/\sigma}$$
-The left-hand side of the labor supply function is now independent of $C^a$\
-$$-\frac{u_{\ell^a}}{u_{C^a}} = \varphi_0(\ell^a)^{1/\sigma^L}.$$
-This enables us to explicitly solve for the consumption function^[See e.g. Schuster (2021): "The FISK OLG model - A numerical overlapping generations model for Austria", Working paper of the Office of the Austrian Fiscal Advisory Council 7, for a more general proofs, also for other results in this note.]:\
-$$\Lambda^a = (p^{C,a})^{1-\sigma} + \left(\beta\gamma^a\right)^{\sigma}(1+r^a)^{\sigma-1}\Lambda^{a+1},$$
-$$H^a = y^a - \varphi(\ell^a)p^{C,a} + iv^a + ab^a + H^{a+1}/(1+r^a),$$
-$$\Omega^a = \Lambda^a(p^{C,a})^{\sigma-1},$$
-$$C^a = (A^a + H^a)/(p^{C,a}\Omega^a) + \varphi(\ell^a).$$
-$H$: human wealth (discounted future labor and pension income), $\Omega$: marginal propensity to consume out of life-time wealth.
+1.  With income effects:
+    $$u(C^a,l^a) = \frac{(C^a)^{1-1/\sigma}}{1-1/\sigma}- \varphi(\ell^a).$$
+    This just gives a life-time profile of consumption. To pin down the
+    consumption values one has to numerically find the initial
+    consumption level ($C^{\underline{a}}$) that exhausts the budget
+    constraint, i.e. assets at end of life are zero:
+    $A^{\overline{a}} - p^{C,\overline{a}}C^{\overline{a}}+y^{\overline{a}} + iv^{\overline{a}} + ab^{\overline{a}} = 0$.\
+    \
+    With this specification the left-hand side of the labor supply
+    function is given as
+    $$-\frac{u_{\ell^a}}{u_{C^a}} = \varphi_0(\ell^a)^{1/\sigma^L} (C^a)^{1/\sigma}.$$
+
+2.  Without income effects:
+    $$u(C^a,l^a) = \frac{\left[C^a - \varphi(\ell^a)\right]^{1-1/\sigma}}{1-1/\sigma}.$$
+    The left-hand side of the labor supply function is now independent
+    of $C^a$\
+    $$-\frac{u_{\ell^a}}{u_{C^a}} = \varphi_0(\ell^a)^{1/\sigma^L}.$$
+    This enables us to explicitly solve for the consumption
+    function[^4]:\
+    $$\Lambda^a = (p^{C,a})^{1-\sigma} + \left(\beta\gamma^a\right)^{\sigma}(1+r^a)^{\sigma-1}\Lambda^{a+1},$$
+    $$H^a = y^a - \varphi(\ell^a)p^{C,a} + iv^a + ab^a + H^{a+1}/(1+r^a),$$
+    $$\Omega^a = \Lambda^a(p^{C,a})^{\sigma-1},$$
+    $$C^a = (A^a + H^a)/(p^{C,a}\Omega^a) + \varphi(\ell^a).$$ $H$:
+    human wealth (discounted future labor and pension income), $\Omega$:
+    marginal propensity to consume out of life-time wealth.
+
+[^4]: See e.g. Schuster (2021): "The FISK OLG model - A numerical
+    overlapping generations model for Austria", Working paper of the
+    Office of the Austrian Fiscal Advisory Council 7, for a more general
+    proofs, also for other results in this note.
 
 ## Aggregation
 
-To aggregate household variables one must first convert them to period view and then compute weighted sums. E.g. aggregate consumption is $C_t = \sum_a C^a_tN^a_t$. Total effective labor supply is $L^S_t = \sum_a \phi^a_t\ell^a_t\theta^a_tN^a_t$ and so on.
+To aggregate household variables one must first convert them to period
+view and then compute weighted sums. E.g. aggregate consumption is
+$C_t = \sum_a C^a_tN^a_t$. Total effective labor supply is
+$L^S_t = \sum_a \phi^a_t\ell^a_t\theta^a_tN^a_t$ and so on.
 
 # Firm problem
 
@@ -82,63 +122,83 @@ The representative firm solves the following optimization problem
 $$V_t = \max_{I_t,L^D_t} ~\chi_t + V_{t+1}/(1+r_t),~~ s.t.$$
 $$\chi_t = Y(K_t,L^D_t) - (1+\tau^F_t)w_tL^D_t - I_t - T^F_t,$$
 $$T^F_t = \tau^{prof}_t\left[Y(K_t,L^D_t) - (1+\tau^F_t)w_tL^D_t - \delta K_t\right],$$
-$$K_{t+1} = (1-\delta)K_t + I_t.$$
-$V$: discounted value of the firm, $L$: aggregate labor in efficiency units, $I$: investment, $\chi$: per-period dividends, $\tau^F$: pay-roll tax rate, $T^F$: profit taxes, $K$: capital stock, $\delta$: depreciation rate.
+$$K_{t+1} = (1-\delta)K_t + I_t.$$ $V$: discounted value of the firm,
+$L$: aggregate labor in efficiency units, $I$: investment, $\chi$:
+per-period dividends, $\tau^F$: pay-roll tax rate, $T^F$: profit taxes,
+$K$: capital stock, $\delta$: depreciation rate.
 
 ## Envelope and optimality conditions
 
-Define the shadow price of capital as $q^a = \frac{\partial V^a}{\partial K^a}$.
+Define the shadow price of capital as
+$q^a = \frac{\partial V^a}{\partial K^a}$.
 $$K_t:~~~ q_t = (1-\tau^{prof}_t)Y_{K_t}+\tau^{prof}_t\delta + \frac{q_{t+1}}{1+r_t}(1-\delta),$$
 $$I_t: ~~~ 1 = \frac{q_{t+1}}{1+r_t},$$
-$$L^D_t: ~~~ Y_{L^D_t} = (1+\tau^F_t)w_t.$$
-This implies
+$$L^D_t: ~~~ Y_{L^D_t} = (1+\tau^F_t)w_t.$$ This implies
 $$Y_{K_t} = \frac{r_{t-1} + \delta(1-\tau^{prof}_t)}{1-\tau^{prof}_t}.$$
-The right-hand side is user cost of capital $uck_t$. We can think of $Y_{K_t}()$ as the inverse capital demand function that returns the user cost of capital for a given capital stock consistent with optimal behavior of the firm. I assume $Y()$ to be linearly homogenoeous. Therefore, Hayashi's theorem applies: $V_t = q_tK_t$. Inserting this in the capital demand function gives an implicit relationship of $r_t$ and $V_{t+1}$ that can be used to find the asset market clearing interest rate (all other things constant).\
+The right-hand side is user cost of capital $uck_t$. We can think of
+$Y_{K_t}()$ as the inverse capital demand function that returns the user
+cost of capital for a given capital stock consistent with optimal
+behavior of the firm. I assume $Y()$ to be linearly homogenoeous.
+Therefore, Hayashi's theorem applies: $V_t = q_tK_t$. Inserting this in
+the capital demand function gives an implicit relationship of $r_t$ and
+$V_{t+1}$ that can be used to find the asset market clearing interest
+rate (all other things constant).\
 $$Y_{K_{t+1}}(V_{t+1}/(1+r_t)) = \frac{r_{t} + \delta(1-\tau^{prof}_{t+1})}{1-\tau^{prof}_{t+1}}.$$
 
 ## Functional form production function
 
-Here I assume: $Y(K,L) = TFP \cdot K^\alpha L^{1-\alpha}$. Therefore, $Y_K = TFP \cdot(K/L)^{\alpha-1}$ and $Y_L = TFP \cdot(K/L)^{\alpha}$.
+Here I assume: $Y(K,L) = TFP \cdot K^\alpha L^{1-\alpha}$. Therefore,
+$Y_K = TFP \cdot(K/L)^{\alpha-1}$ and $Y_L = TFP \cdot(K/L)^{\alpha}$.
 
 # Government
 
 Total government expenditures are:\
 $$Exp_t = C^G_t + P_t, ~~~\text{with~~} C^G_t = \sum_a c^{G,a}_tN^a_t,~~~ P_t = \sum_a (1-\phi^a_t)p^a_tN^a_t,$$
 Total government revenues are:\
-$$Rev_t = T^F_t + (\tau^F_tL^D_t + \tau^W_tL^S_t)w_t + \sum_a \tau^{l,a}_tN^a_t + \tau^C_tC_t + \tau^W_tP_t$$
-One of the government instruments is always set such that the primary balance ($PB_t = Rev_t - Exp_t$) is consistent with an exogenous debt trajectory following the law of motion
+$$Rev_t = T^F_t + (\tau^F_tL^D_t + \tau^W_tL^S_t)w_t + \sum_a \tau^{l,a}_tN^a_t + \tau^C_tC_t + \tau^W_tP_t.$$
+One of the government instruments is always set such that the primary
+balance ($PB_t = Rev_t - Exp_t$) is consistent with an exogenous debt
+trajectory following the law of motion
 $$D^G_{t+1} = (1+r_t)\left[D^G_t - PB_t\right].$$
 
 # Equilibrium
 
-Equilibrium in the closed economcy is given by optimal behavior by households (aggregated accordingly) and the representative firm and the following market clearing conditions
+Equilibrium in the closed economcy is given by optimal behavior by
+households (aggregated accordingly) and the representative firm and the
+following market clearing conditions
 $$\zeta^Y_t = I_t + C_t + C^G_t - Y_t = 0,$$
 $$\zeta^A_t = D^G_t + V_t - A_t = 0,$$
 $$\zeta^L_t = L^D_t - L^S_t = 0,$$
-$$\zeta^G_t = Rev_t - Exp_t - PB_t = 0,$$
-and the resource constraints for intervivo transfers ($\zeta^{iv} = 0$) and ($\zeta^{ab} = 0$) binding.\
+$$\zeta^G_t = Rev_t - Exp_t - PB_t = 0,$$ and the resource constraints
+for intervivo transfers ($\zeta^{iv} = 0$) and ($\zeta^{ab} = 0$)
+binding.\
 \
-It is good practice to always check if Walras' Law holds (even out of equilibrium):
+It is good practice to always check if Walras' Law holds (even out of
+equilibrium):
 $$\zeta^W_t = \zeta^Y_t + w_t\zeta^L_t + \zeta^G_t + \zeta^{iv}_t + \zeta^{ab}_t + \zeta^{A}_t - \frac{\zeta^{A}_{t+1}}{1+r_t} = 0.$$
 
 # Extensions
 
-Based on this core set-up some extensions are conceptually more challenging, in the sense of requiring alterations deep in the solution procedure. Those are for example:
+Based on this core set-up some extensions are conceptually more
+challenging, in the sense of requiring alterations deep in the solution
+procedure. Those are for example:
 
-* aggregate uncertainty
-* structural unemployment
-* endogenous technology
-* explicit bequest motive
+-   aggregate uncertainty
+-   structural unemployment
+-   endogenous technology
+-   explicit bequest motive
 
-Other extensions are conceptually much simpler to implement (in the sense of 'more of the same'), for example:
+Other extensions are conceptually much simpler to implement (in the
+sense of 'more of the same'), for example:
 
-* moderate cross-sectional household heterogeneity
-* (small) open economy setting
-* migration
-* more labor supply margins
-* more household states (e.g. stock of accumulated pension rights)
-* non-linear income tax
-* more fiscal instruments
-* monopolistic competition in the goods' market
-* more advanced government debt rules
-* detrending by productivity growth, population growth, trend inflation
+-   moderate cross-sectional household heterogeneity
+-   (small) open economy setting
+-   migration
+-   more labor supply margins
+-   more household states (e.g. stock of accumulated pension rights)
+-   non-linear income tax
+-   more fiscal instruments
+-   monopolistic competition in the goods' market
+-   more advanced government debt rules
+-   detrending by productivity growth, population growth, trend
+    inflation
