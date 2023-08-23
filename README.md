@@ -18,7 +18,7 @@ quarto render solveOLG_doc.qmd
 
 ## Performance comparison of different implementations
 
-Execution time of the tatonnement algorithm (i.e. solving for the transition path) of the 'closed economy with income effects'-case run on an Intel(R) Xeon(R) Platinum 8180 CPU @ 2.50GHz (default shock):
+Execution time of the tatonnement algorithm (i.e. solving for the transition path) of the 'closed economy with income effects'-case (default shock) run on an Intel(R) Xeon(R) Platinum 8180 CPU @ 2.50GHz:
 
 | implementation       | threads | time in secs  |
 | :------ | ------: | -----: |
