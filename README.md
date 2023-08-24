@@ -1,5 +1,5 @@
 # solveOLG model documentation
-Short documentation of the AK-OLG-model solved in `solveOLG_...` codes.
+Short documentation of the AK-OLG-model solved in `solveCGE/solveOLG_...` codes.
 
 Compile solveOLG_doc.qmd as follows
 ```
