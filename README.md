@@ -38,7 +38,7 @@ Execution time of the tatonnement algorithm (i.e. solving for the transition pat
 | R              | 1       | 13.99 |
 | Python         | 1       | 25.91 |
 
-*Note: Time is median time of 5 consecutive runs. The Rcpp solution in the table used fixed dimension vectors/matrices and all variables in global scope. Other implementations (e.g. non-fixed dimensions or passing struct references instead of using global scope) had no significant effect on execution time. The Matlab implementation was run run on a different CPU. Time was then rescaled using the relative difference of the results of the R implementation on the two different architectures.*
+*Note: Time is median time of 5 consecutive runs. The Rcpp solution in the table used fixed dimension vectors/matrices and all variables in global scope. Other implementations (e.g. non-fixed dimensions or passing struct references instead of using global scope) had no significant effect on execution time. The Matlab implementation was run on a different CPU. Time was then rescaled using the relative difference of the results of the R implementation on the two different architectures.*
 
 ## Author
 Philip Schuster
