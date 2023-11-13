@@ -28,7 +28,7 @@ In the following I compare runtimes of implementations along different dimension
 
 Execution time of the transition solving algorithm for the default shock (change in mortality and number of newborns) run on an Intel(R) Xeon(R) Platinum 8180 CPU @ 2.50GHz:
 
-| implementation | income eff. | algorithm   | scoping              | threads | time  |
+| implementation | income eff. | algorithm   | scoping              | threads | time in sec |
 | :-------------- | ----------- | ----------- | -------------------- | -------: | -----: |
 | Rcpp           | yes         | tatonnement | struct pass/unpack    | 20      | 0.32  |
 | Rcpp           | yes         | tatonnement | global               | 20      | 0.35  |
