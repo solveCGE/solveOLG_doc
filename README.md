@@ -51,7 +51,7 @@ Execution time of the transition solving algorithm for the default shock (change
 | Python         | yes         | tatonnement | global               | 1       | 27.54 |
 | R              | no          | GFT         | global               | 1       | 50.67 |
 
-*Note: Time is median time of 5 consecutive runs. The Rcpp solution in the table used fixed-dimension vectors/matrices and was compiled with `gcc -O3`. The Matlab implementation was run on a different CPU. Time was then rescaled using the relative difference of the results of the R implementation on the two different architectures.*
+*Note: Time is median time of 5 consecutive runs. The Rcpp solution in the table used fixed-dimension vectors/matrices and was compiled with `g++ -O3`. The Matlab implementation was run on a different CPU. Time was then rescaled using the relative difference of the results of the R implementation on the two different architectures.*
 
 ## Author
 Philip Schuster
