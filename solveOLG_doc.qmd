@@ -177,7 +177,22 @@ It is good practice to always check if Walras' Law holds (even out of
 equilibrium):
 $$\zeta^W_t = \zeta^Y_t + w_t\zeta^L_t + \zeta^G_t + \zeta^{iv}_t + \zeta^{ab}_t + \zeta^{A}_t - \frac{\zeta^{A}_{t+1}}{1+r_t} = 0.$$
 
-# Extensions
+# Alternative closure: Small open economy
+
+Instead of the closed economy setting from above I now consider the small open economy case. Domestic and foreign goods as well as assets are perfect substitutes, respectively. The international price of the homogeneous good is 1 and the international real rate $r_t$ is exogenously given. While the household problem is unaltered, I have to introduce capital adjustment costs $J_t$ to the firm problem for realistic dynamics. The following equations replace their counterparts from above
+$$\chi_t = Y(K_t,L^D_t) - (1+\tau^F_t)w_tL^D_t - I_t - J_t- T^F_t,$$
+$$T^F_t = \tau^{prof}_t\left[Y(K_t,L^D_t) - (1+\tau^F_t)w_tL^D_t - J_t - \delta K_t\right],$$
+with $J_t = \frac{\psi}{2} K_t(I_t/K_t - \delta)^2$. The envelope condition and the first order condition for optimal investment change to
+$$K_t:~~~ q_t = (1-\tau^{prof}_t)(Y_{K_t} - J_{K_t})+\tau^{prof}_t\delta + \frac{q_{t+1}}{1+r_t}(1-\delta),$$
+$$I_t: ~~~ 1 + J_{I_t} = \frac{q_{t+1}}{1+r_t},$$
+Because of linear homogeneity of $J(\cdot)$, Hayashi's theorem still applies: $V_t = q_tK_t$. In addition we have the law of motion of foreign assets $D^F$ as function of the current account/trade balance $TB$
+$$D^F_{t+1} = (1+r_t)\left[D^F_t + TB_t\right].$$
+
+Consequently, the excess demands for the final good and assets change to
+$$\zeta^Y_t = I_t + C_t + C^G_t + TB_t - Y_t = 0,$$
+$$\zeta^A_t = D^G_t + D^F_t + V_t - A_t = 0.$$
+
+# Other extensions
 
 Based on this core set-up some extensions are conceptually more
 challenging, in the sense of requiring alterations deep in the solution
@@ -192,7 +207,7 @@ Other extensions are conceptually much simpler to implement (in the
 sense of 'more of the same'), for example:
 
 -   moderate cross-sectional household heterogeneity
--   (small) open economy setting
+-   imperfect substitution between domestic and foreign goods (Armington assumption)
 -   migration
 -   more labor supply margins
 -   more household states (e.g. stock of accumulated pension rights)

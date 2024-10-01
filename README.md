@@ -5,7 +5,7 @@ Compile solveOLG_doc.qmd as follows
 ```
 quarto render solveOLG_doc.qmd
 ```
-## Implementations
+## Implementations -- Closed Economy
 
 - in pure R: [solveOLG_closed_R](https://github.com/solveCGE/solveOLG_closed_R)
 - in pure R (without income effects): [solveOLG_closed_noinceff](https://github.com/solveCGE/solveOLG_closed_noinceff)
@@ -18,7 +18,11 @@ quarto render solveOLG_doc.qmd
 - in Julia (passing cohort data as slices): [solveOLG_closed_Julia_v3](https://github.com/solveCGE/solveOLG_closed_Julia_v3)
 - in R/C++ (using `RcppArmadillo`, nesting different specifications): [solveOLG_closed_Rcpp](https://github.com/solveCGE/solveOLG_closed_Rcpp) and [pkgsolveOLG](https://github.com/solveCGE/pkgsolveOLG)
 
-## Performance comparison of different implementations
+## Implementations -- Open Economy
+
+- in pure R: [solveOLG_open_R](https://github.com/solveCGE/solveOLG_open_R)
+
+## Performance Comparison of Different Closed Economy Implementations
 
 In the following I compare runtimes of implementations along different dimensions:
 - implementing language: R, R/C++, Julia, Python, Matlab
@@ -57,4 +61,3 @@ Execution time of the transition solving algorithm for the default shock (change
 
 ## Author
 Philip Schuster
-
